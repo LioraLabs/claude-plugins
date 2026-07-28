@@ -1,0 +1,15 @@
+{
+  "name": "cook",
+  "description": "Skills for the cook build system: using cook, authoring Cookfiles, and authoring cook modules",
+  "version": "0.1.0",
+  "author": {
+    "name": "Liora Labs"
+  },
+  "repository": "https://github.com/LioraLabs/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "cook",
+    "build-system",
+    "cookfile"
+  ]
+}

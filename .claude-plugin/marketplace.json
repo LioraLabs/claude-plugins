@@ -1,0 +1,32 @@
+{
+  "name": "lioralabs",
+  "description": "Liora Labs Claude Code plugins: cliban (agent-first kanban workflow) and cook (build-system skills)",
+  "owner": {
+    "name": "Liora Labs",
+    "url": "https://github.com/LioraLabs"
+  },
+  "plugins": [
+    {
+      "name": "cliban",
+      "description": "Cliban kanban/issue CLI workflow: issue and bug tracking, project status, ticket creation, progressive project memory, and end-to-end milestone orchestration",
+      "version": "0.1.0",
+      "source": {
+        "source": "github",
+        "repo": "LioraLabs/cliban",
+        "path": "plugin"
+      },
+      "author": {
+        "name": "Liora Labs"
+      }
+    },
+    {
+      "name": "cook",
+      "description": "Skills for the cook build system: using cook, authoring Cookfiles, and authoring cook modules",
+      "version": "0.1.0",
+      "source": "./plugins/cook",
+      "author": {
+        "name": "Liora Labs"
+      }
+    }
+  ]
+}
