@@ -27,6 +27,20 @@ register
 
 Run it with the binary you're targeting. `cook --version` reports a Standard version, but that is a claim about the language, not a guarantee that every section of §22 is implemented in that build. Names beginning `__` are private.
 
+The check cuts both ways: the binary also REMOVES APIs (CS-0185 took `cook.add_test` and
+`suite`), and a module calling a removed one dies at register time on every current-engine
+workspace — masked, cruelly, by cached register replay until an input edit re-mints
+(an open engine bug as of 2026-07-29). Two habits keep you honest:
+
+- **A spec stub must be as strict as the engine, not more forgiving.** When the engine
+  removes an API, make the stub RAISE on it (with the CS number), and make the stub enforce
+  the replacement's register-time rules (e.g. `step_kind = "test"` forbids `suite` and
+  outputs). A stub that still captures removed calls keeps the whole suite green on code no
+  engine will run — busted 63/63 proves the module agrees with your stub, nothing more.
+- **Smoke-test against a live engine before publishing.** Copy the changed files over a real
+  consumer workspace's vendored `cook_modules/` tree and run its `cook check`. Register-time
+  rejections that no stub models (field validation, payload shapes) only surface there.
+
 ## Adjacent `add_unit` calls run SERIALLY
 
 The most expensive default in the system, and it fails silently — the build is correct either way, just N times slower.

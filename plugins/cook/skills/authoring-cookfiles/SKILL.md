@@ -50,6 +50,8 @@ recipe claim-in-sync
 
 Putting determinants in `ingredients` fan-outs them (wrong granularity) or makes the command line lie about what it consumes. Putting drivers in a seal loses the fan-out entirely.
 
+Said bluntly: **`ingredients` is the iteration surface, not a cache lever.** "I want this file to invalidate the unit" is never by itself a reason to add an ingredient — that instinct is the declare-my-inputs mental model wearing a different hat, and it produces units that fan out over config files or whose command lines lie about what they consume. Ask "does the command iterate or read this as its work item?" If yes, ingredient. If it merely *determines the answer*, it is a sealed probe. Cache participation falls out of either choice; it is not the choice.
+
 ### 3. Cacheability is derived from the source — a seal never mints a key
 
 **A seal narrows reuse of a key that already exists; it never creates one.** A sourceless test sealed on ten probes still runs on every invocation. If you want it cached, give it a source (`ingredients`, or a dependency's outputs). If you want it to always run, give it no source — that is the supported way to write a gate.
@@ -106,6 +108,8 @@ Two consequences learned the hard way: a working-state assertion as a test recip
 - Shell steps **stream** output and abort the chore on non-zero. Lua steps calling `cook.sh` **capture** it — and a large failure can be truncated. Prefer shell steps for anything whose failure you need to read.
 - Chores are excluded from `cook test` fan-out. That exclusion is the lever for "must run, must not be a test root."
 - Keep the Cookfile declaring units and edges; push imperative shell into scripts. A pipeline assembled with `table.concat` in Lua is a smell.
+- **A chore step must never require a human at a terminal.** `cook.sh` provides no TTY and captures output, so a step that opens `$EDITOR`, prompts, or waits on stdin hangs forever when run headless (agents, CI) — and an aborted multi-step chore leaves its `.cook/` state files behind for the retry to trip on. Interactive input needs a parallel non-interactive path: a chore parameter, a message file, or stdin. (Canonical casualty: the `cook rockspec` changelog editor in cook-modules.)
+- A chore that mutates more than one repo should pre-flight ALL of them clean before touching any, and clean up its own droppings on abort — a half-run publishing flow is the most expensive kind of stale state.
 
 ## Recipe bodies are not Lua scripts
 

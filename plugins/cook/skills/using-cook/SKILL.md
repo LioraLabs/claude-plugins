@@ -130,3 +130,23 @@ whether the module needs a newer Standard than the binary implements.
 
 Fix by moving whichever side is behind: `cook modules update <name>` for the module,
 or upgrade the binary.
+
+Skew runs the other way too: the **binary outruns the module**, and the error is a loud
+CS-XXXX "removed in vN" message pointing at a `cook_modules/` path (e.g. CS-0185,
+`cook.add_test` removed). Same triage: the module lagged the Standard; check
+`cook modules search <name>` for a release that caught up, or fix the module at its source.
+
+Two operational traps around that:
+
+- **`cook modules install` realises the LOCK, not the manifest.** Editing `cook.toml` and
+  running `install` changes nothing and reports success — this is pnpm-style lockfile
+  determinism, not a bug. To move a pin: edit `cook.toml`, then `cook modules update <name>`.
+- **A binary upgrade can stay latent for days.** Cached register-phase replay is keyed on
+  Cookfile + module tree + declared inputs, but NOT the engine version (an open engine bug as of
+  2026-07-29). A warm workspace keeps replaying mints from a module the new binary would
+  reject, so everything stays green — until an unrelated edit to a mint input (a lockfile, a
+  package.json) forces live re-registration and every cook command dies at once. The
+  signature: a removed-API CS error that appears immediately after a dependency edit that
+  has nothing to do with cook. The edit is innocent; the upgrade days earlier is the cause.
+  After upgrading the binary, force a live re-register and watch for CS errors before
+  trusting green.

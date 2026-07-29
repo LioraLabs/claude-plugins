@@ -1,7 +1,7 @@
 {
   "name": "cook",
   "description": "Skills for the cook build system: using cook, authoring Cookfiles, and authoring cook modules",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Liora Labs"
   },
