@@ -8,8 +8,7 @@
   "plugins": [
     {
       "name": "cliban",
-      "description": "Cliban kanban/issue CLI workflow: issue and bug tracking, project status, ticket creation, progressive project memory, and end-to-end milestone orchestration",
-      "version": "0.1.0",
+      "description": "Cliban kanban/issue CLI workflow: issue and bug tracking, project status, ticket creation, progressive project memory, the Linear import/push bridge, and end-to-end milestone orchestration",
       "source": {
         "source": "github",
         "repo": "LioraLabs/cliban",
@@ -22,7 +21,6 @@
     {
       "name": "cook",
       "description": "Skills for the cook build system: using cook, authoring Cookfiles, and authoring cook modules",
-      "version": "0.1.1",
       "source": "./plugins/cook",
       "author": {
         "name": "Liora Labs"

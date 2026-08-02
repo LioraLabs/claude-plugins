@@ -12,7 +12,8 @@ claude plugin marketplace add LioraLabs/claude-plugins
 
 Workflow skills for [cliban](https://github.com/LioraLabs/cliban), the
 self-hosted kanban board your agents can't forget: issue and bug tracking,
-project status, ticket capture, progressive project memory, and
+project status, ticket capture, progressive project memory, the Linear
+bridge (`import` an issue, work it, `push` it back), and
 `complete-milestone`, which drives every issue in a milestone through its
 own agent in dependency order. Ships `/bugs` and `/status` commands.
 
