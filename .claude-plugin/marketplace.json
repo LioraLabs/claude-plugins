@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "cliban",
-      "description": "Cliban kanban/issue CLI workflow: issue and bug tracking, project status, ticket creation, progressive project memory, the Linear import/push bridge, and end-to-end milestone orchestration",
+      "description": "Cliban kanban/issue CLI workflow: issue and bug tracking, project status, ticket creation, progressive project memory, the Linear import/push bridge (import --mine, sync, living progress comments, push-on-move), end-to-end milestone orchestration, and per-repo setup that binds any craft stack to the board",
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/LioraLabs/cliban",
