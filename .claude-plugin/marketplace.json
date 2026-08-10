@@ -1,6 +1,6 @@
 {
   "name": "lioralabs",
-  "description": "Liora Labs Claude Code plugins: cliban (agent-first kanban workflow) and cook (build-system skills)",
+  "description": "Liora Labs Claude Code plugins: cliban (agent-first kanban CLI), cliban-flow (its scoping and execution workflow), and cook (build-system skills)",
   "owner": {
     "name": "Liora Labs",
     "url": "https://github.com/LioraLabs"
@@ -8,11 +8,23 @@
   "plugins": [
     {
       "name": "cliban",
-      "description": "Cliban kanban/issue CLI workflow: issue and bug tracking, project status, ticket creation, progressive project memory, the Linear import/push bridge (import --mine, sync, living progress comments, push-on-move), end-to-end milestone orchestration, and per-repo setup that binds any craft stack (superpowers, mattpocock-skills, plan mode) to the board and finishes that stack's own companion setup",
+      "description": "Drive the cliban kanban board from the CLI: issue and bug tracking, project status, ticket creation, milestones, progressive project memory, the Linear import/push bridge (import --mine, sync, living progress comments, push-on-move), and per-repo setup that binds a repo to its board. Live board state is injected into every session in a bound repo",
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/LioraLabs/cliban",
         "path": "plugin"
+      },
+      "author": {
+        "name": "Liora Labs"
+      }
+    },
+    {
+      "name": "cliban-flow",
+      "description": "The cliban-native feature workflow: explore-feature diverges a rough idea into an approved design, scope-milestone grills it closed and publishes tracer-bullet tickets with native blocking edges (on a milestone when the work needs more than one slice), complete-issue plans and executes a single ticket test-first, and complete-milestone orchestrates a whole milestone in dependency waves with one agent per ticket. Carries the workflow contract for where specs, plans, and lessons live. Requires the cliban plugin",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/LioraLabs/cliban",
+        "path": "plugin-flow"
       },
       "author": {
         "name": "Liora Labs"
