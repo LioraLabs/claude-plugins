@@ -1,6 +1,6 @@
 {
   "name": "lioralabs",
-  "description": "Liora Labs Claude Code plugins: cliban (agent-first kanban CLI), cliban-flow (its scoping and execution workflow), and cook (build-system skills)",
+  "description": "Liora Labs Claude Code plugins: cliban (agent-first kanban CLI), cliban-flow (its scoping and execution workflow), cook (build-system skills), and codegraph (code-navigation discipline for the codegraph knowledge graph)",
   "owner": {
     "name": "Liora Labs",
     "url": "https://github.com/LioraLabs"
@@ -34,6 +34,14 @@
       "name": "cook",
       "description": "Skills for the cook build system: using cook, authoring Cookfiles, and authoring cook modules",
       "source": "./plugins/cook",
+      "author": {
+        "name": "Liora Labs"
+      }
+    },
+    {
+      "name": "codegraph",
+      "description": "Discipline layer for codegraph (colbymchenry/codegraph): a routing ladder that sends agents to the knowledge graph for orientation, tracing, and blast radius — and to grep when grep honestly wins",
+      "source": "./plugins/codegraph",
       "author": {
         "name": "Liora Labs"
       }

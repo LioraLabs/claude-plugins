@@ -35,6 +35,18 @@ Cookfiles, and authoring cook modules.
 claude plugin install cook@lioralabs
 ```
 
+### codegraph
+
+A discipline layer for [codegraph](https://github.com/colbymchenry/codegraph),
+the pre-indexed code knowledge graph: a routing ladder that sends agents to
+the graph for orientation, call tracing, and blast radius — and to grep when
+grep honestly wins. The tool itself installs separately; this plugin teaches
+agents when to reach for it.
+
+```bash
+claude plugin install codegraph@lioralabs
+```
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

@@ -1,0 +1,16 @@
+{
+  "name": "codegraph",
+  "description": "Discipline layer for codegraph (colbymchenry/codegraph): a routing ladder that sends agents to the knowledge graph for orientation, tracing, and blast radius — and to grep when grep honestly wins",
+  "version": "0.1.0",
+  "author": {
+    "name": "Liora Labs"
+  },
+  "repository": "https://github.com/LioraLabs/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "codegraph",
+    "code-intelligence",
+    "knowledge-graph",
+    "code-navigation"
+  ]
+}
