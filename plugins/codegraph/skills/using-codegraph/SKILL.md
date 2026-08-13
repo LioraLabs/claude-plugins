@@ -21,6 +21,10 @@ Stop at the first rung that answers the question:
 
 A multi-file Grep/Read sweep is the signal you skipped a rung: name the question, re-enter the ladder.
 
+## The graph is per-repo, not per-session
+
+Any directory holding `.codegraph/` is queryable, wherever your session started: every command takes `-p <path>` (`codegraph explore -p /path/to/repo "<terms>"`). When a task points at another repo, check for its `.codegraph/` before concluding the graph doesn't apply — the index belongs to the target repo, not to your working directory.
+
 ## Fat calls
 
 `explore` accepts multiple terms — `codegraph explore "parser tokenizer lexer"` is one round-trip; three separate explores are three. Batch the names you already know you need.
