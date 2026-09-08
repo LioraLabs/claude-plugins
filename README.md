@@ -47,6 +47,17 @@ agents when to reach for it.
 claude plugin install codegraph@lioralabs
 ```
 
+### ppu-toys
+
+Create uploadable [ppu.toys](https://ppu.toys) demos with the standalone
+`ppu` CLI: Lua register control, Mode 7, HDMA, PNG import, native rendering,
+and playback/seek checks. Includes the `creating-demos` skill. Install
+`ppu` 0.1.0 or newer separately; no development repositories are needed.
+
+```bash
+claude plugin install ppu-toys@lioralabs
+```
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
