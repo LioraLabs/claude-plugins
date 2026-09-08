@@ -1,6 +1,6 @@
 ---
 name: creating-demos
-description: Create and edit uploadable ppu.toys demos with the standalone ppu CLI. Use the Lua register and memory DSL to exploit SNES graphics effects, especially Mode 7, HDMA, sprites, windows, and color math, then render, check, and pack a self-contained toy.
+description: Create and edit uploadable ppu.toys demos and games with the standalone ppu CLI. Use Lua controller input, register and memory control, Mode 7, HDMA, sprites, windows, and color math, then render, check, and pack a self-contained toy.
 ---
 
 # Creating ppu.toys demos
@@ -44,6 +44,7 @@ aliases for screen/window/color-math registers and friendly names elsewhere.
 | Surface | What it controls |
 | --- | --- |
 | `init()`, `frame(t, f)` | Setup, then animation from seconds and frame number |
+| `pad.up/down/left/right`, `pad.a/b/x/y/l/r/start/select` | First SNES controller; booleans refreshed before each frame |
 | `mode`, `brightness`, `force_blank`, `mosaic` | Display and background configuration |
 | `bg[1]` through `bg[4]` | Character/map bases, tilemaps, scrolling, layer settings |
 | `m7.a/b/c/d`, `m7.cx/cy`, `m7.wrap`, `m7.extbg` | Affine sampling, perspective via scanlines, and Mode 7 priority |
@@ -113,6 +114,27 @@ markers = { start = 0, change = 16, loop_end = 32 }
 
 Drive animation from those timings. Match the CLI check duration/loop flags
 to the timeline; the CLI does not infer them from Lua.
+
+## Interactive games
+
+Games use the same Lua files and packed format as demos. Read `ppu docs pad`
+for controller input and keyboard/gamepad mappings. `pad` fields are true
+while held; keep the previous value to detect a single press for actions
+such as jumping, firing, or starting a game. Keep positions, velocities,
+collisions, scores, and game state in Lua between frames. The PPU renders
+the result; gameplay logic belongs to the toy.
+
+In Studio, click the output to focus keyboard input. Arrow keys are the
+D-pad; Z/X are B/A, A/S are Y/X, Q/W are L/R, Enter is Start, and Shift is
+Select. Standard-mapping gamepads are supported too. Include the controls
+with the game so players can discover them.
+
+Stateful games need not support arbitrary seeks or a fixed timeline loop.
+Use ordinary sequential `ppu check --duration ...`, and test movement,
+button edges, collisions, and restart behavior interactively in Studio.
+The current CLI supplies released input and has no input-replay command:
+headless checks can exercise the idle/attract state but do not prove gameplay.
+Give a game that waits for Start a visible title/idle screen for previews.
 
 ## Inspect, check, deliver
 

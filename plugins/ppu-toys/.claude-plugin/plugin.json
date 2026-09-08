@@ -1,7 +1,7 @@
 {
   "name": "ppu-toys",
   "description": "Create uploadable ppu.toys demos with the standalone ppu CLI: Lua register control, Mode 7, HDMA, native rendering, and checks",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": {
     "name": "Liora Labs"
   },
