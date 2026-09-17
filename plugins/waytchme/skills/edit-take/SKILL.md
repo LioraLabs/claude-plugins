@@ -23,26 +23,26 @@ directory containing `waytchme.py`; sessions normally sit in its `sessions/`.
    can say what the take is about and what the narrator asked for.
 3. **Decide the edit.** Apply every rule under *Rules* below. Done when each
    directive has a resolution or a flag, and every cut has a reason.
-4. **Write `EDIT.json`** next to the session using the *Schema* below.
-5. **Check it.** Run `python3 waytchme.py edit-check SESSION EDIT.json`.
-   Exit 2 names an invalid entry: fix it and rerun. Exit 1 lists warnings,
-   typically a directive left audible: fix the cut, or keep it only if the
-   narrator's words demand it and say why in the directive's `resolved`.
-   Done when the command exits 0.
+4. **Write `SESSION/edit.json`** using the *Schema* below.
+5. **Check it.** Run `python3 waytchme.py edit-check SESSION SESSION/edit.json`.
+   Exit 2 names an invalid entry: fix it and rerun. Exit 1 lists warnings, a
+   directive left audible, a directive missing from `directives`, or a caption
+   inside a cut: fix the list and rerun. Done when the command exits 0.
 6. **Hand over the review.** Show the user the review text verbatim and stop.
    Render only when they approve:
-   `python3 waytchme.py render SESSION --auto --edit EDIT.json --output cut`.
+   `python3 waytchme.py render SESSION --auto --edit SESSION/edit.json --output cut`.
 
 ## Rules
 
 - **Directives.** An utterance beginning with "Murphy" is an instruction to
-  you, never content. Cut its whole span, always. Resolve what it refers to
-  from the transcript and the screen activity: "start here" cuts everything
-  from zero through the directive; "cut that part where I explained X, I'll
-  start over" cuts from where that explanation began through the directive;
-  "stop there" cuts from the directive to the end. Record each as
-  `{"quote", "resolved"}`. An instruction you cannot pin to a span stays in
-  the video and is flagged as `"resolved": "unresolved: <why>"`; never guess
+  you, never content. Cut the utterance itself, always, and list every one
+  in `directives` as `{"quote", "resolved"}`. Resolve what it refers to from
+  the transcript and the screen activity: "start here" cuts everything from
+  zero through the directive; "cut that part where I explained X, I'll start
+  over" cuts from where that explanation began through the directive; "stop
+  there" cuts from the directive to the end. When you cannot pin the referent
+  to a span, still cut the utterance, leave the referent in, and write
+  `"resolved": "utterance cut; referent unresolved: <why>"`; never guess
   silently. Words that sound like editing talk without the name are content.
 - **Restarts.** When the narrator repeats a passage after a directive or a
   false start, keep the last complete attempt and cut the earlier ones.
@@ -57,8 +57,9 @@ directory containing `waytchme.py`; sessions normally sit in its `sessions/`.
   spoken span, sentence case, no filler. Skip captions that would sit
   entirely inside a cut.
 - **Markers.** One per topic change, titled in a few words.
-- **Webcam.** Leave `webcam` out to keep the picture-in-picture on
-  throughout; list spans only to hide it while the screen needs the space.
+- **Webcam.** `webcam` spans are where the picture-in-picture is visible.
+  Leave the field out to show it throughout; list spans to show it only
+  there, for instance hiding it while the screen needs the space.
 
 ## Schema
 
@@ -71,7 +72,7 @@ multiply seconds by 1000000000. Spans within the take, in order, no overlap.
   "cuts": [{"start_ns": 0, "end_ns": 6100000000, "reason": "\"Murphy, start here\": setup before it"}],
   "captions": [{"start_ns": 6000000000, "end_ns": 7500000000, "text": "Click New to begin"}],
   "markers": [{"t_ns": 6000000000, "title": "Getting started"}],
-  "webcam": [{"start_ns": 0, "end_ns": 6000000000}],
+  "webcam": [{"start_ns": 6100000000, "end_ns": 16000000000}],
   "directives": [{"quote": "Murphy, start here.", "resolved": "cut 0:00.00-0:06.10"}],
   "corrections": [{"original": "ppu toys.com", "corrected": "ppu.toys", "evidence": "the narrator types ppu.toys in the address bar at 0:08"}]
 }
