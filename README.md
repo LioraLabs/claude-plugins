@@ -47,6 +47,18 @@ agents when to reach for it.
 claude plugin install codegraph@lioralabs
 ```
 
+### waytchme
+
+Edit a [WaytchMe](https://github.com/LioraLabs/waytchme) screen recording from
+its transcript and event log. The `edit-take` skill makes the agent Murphy,
+the editor the narrator talks to while recording: it obeys spoken directives,
+cuts fluff, captions, and hands you the review before anything renders.
+Needs a WaytchMe checkout with the session.
+
+```bash
+claude plugin install waytchme@lioralabs
+```
+
 ### ppu-toys
 
 Create uploadable [ppu.toys](https://ppu.toys) demos with the standalone

@@ -1,0 +1,16 @@
+{
+  "name": "waytchme",
+  "description": "Edit a WaytchMe screen recording from its transcript and event log: obey spoken directives to Murphy, cut fluff, caption, then hand the review to the user",
+  "version": "0.1.0",
+  "author": {
+    "name": "Liora Labs"
+  },
+  "repository": "https://github.com/LioraLabs/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "waytchme",
+    "screen-recording",
+    "video-editing",
+    "transcript"
+  ]
+}
