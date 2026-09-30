@@ -73,3 +73,18 @@ claude plugin install ppu-toys@lioralabs
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+### game-bible
+
+House rules for building games with agents without giving up control. The
+`game-bible` skill keeps every value a designer might tweak in readable KDL
+and CSS (the tweak map: nothing tweakable hides in source), makes agents build
+the game's vocabulary before its content, and uses Storybook as the game
+editor. `game-bible-tidy` audits a game repo that has drifted and fixes it
+without changing how it plays. Built and tested on
+[GRAVEWAKE](https://github.com/LioraLabs/gravewake);
+[read how it went](https://lioralabs.dev/blog/agentic-speed-human-control).
+
+```bash
+claude plugin install game-bible@lioralabs
+```

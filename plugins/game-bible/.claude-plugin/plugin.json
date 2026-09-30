@@ -1,0 +1,18 @@
+{
+  "name": "game-bible",
+  "description": "House rules for building games with agents while keeping a human in control: KDL content and a CSS dialect for look (the tweak map: nothing tweakable hides in source), a vocabulary built before content, functional core / imperative shell, Storybook as the game editor. Plus game-bible-tidy, which audits a drifted game repo and fixes it without changing how it plays",
+  "version": "0.1.0",
+  "author": {
+    "name": "Liora Labs"
+  },
+  "repository": "https://github.com/LioraLabs/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "kdl",
+    "css",
+    "storybook",
+    "threejs",
+    "pixi"
+  ]
+}

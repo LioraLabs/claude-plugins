@@ -1,6 +1,6 @@
 {
   "name": "lioralabs",
-  "description": "Liora Labs Claude Code plugins: cliban (agent-first kanban CLI), cliban-flow (its scoping and execution workflow), cook (build-system skills), codegraph (code-navigation discipline), and ppu-toys (native PPU demo authoring)",
+  "description": "Liora Labs Claude Code plugins: cliban (agent-first kanban CLI), cliban-flow (its scoping and execution workflow), cook (build-system skills), codegraph (code-navigation discipline), ppu-toys (native PPU demo authoring), and game-bible (building games with agents under human control)",
   "owner": {
     "name": "Liora Labs",
     "url": "https://github.com/LioraLabs"
@@ -48,7 +48,7 @@
     },
     {
       "name": "codegraph",
-      "description": "Discipline layer for codegraph (colbymchenry/codegraph): a routing ladder that sends agents to the knowledge graph for orientation, tracing, and blast radius \u2014 and to grep when grep honestly wins",
+      "description": "Discipline layer for codegraph (colbymchenry/codegraph): a routing ladder that sends agents to the knowledge graph for orientation, tracing, and blast radius — and to grep when grep honestly wins",
       "source": "./plugins/codegraph",
       "author": {
         "name": "Liora Labs"
@@ -58,6 +58,14 @@
       "name": "waytchme",
       "description": "Edit a WaytchMe take as Murphy: obey spoken directives, cut fluff, caption, review before rendering",
       "source": "./plugins/waytchme",
+      "author": {
+        "name": "Liora Labs"
+      }
+    },
+    {
+      "name": "game-bible",
+      "description": "House rules for building games with agents while keeping a human in control: KDL content and a CSS dialect for look (the tweak map: nothing tweakable hides in source), a vocabulary built before content, functional core / imperative shell, Storybook as the game editor. Plus game-bible-tidy, which audits a drifted game repo and fixes it without changing how it plays",
+      "source": "./plugins/game-bible",
       "author": {
         "name": "Liora Labs"
       }
