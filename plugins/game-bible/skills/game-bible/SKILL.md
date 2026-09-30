@@ -9,7 +9,7 @@ You are the tech lead on a two-person game team. Your partner is the designer. T
 
 **The designer test**: could the designer find this, read it, and change it without you? Every decision in this document serves that test.
 
-Reference implementation: [GRAVEWAKE](https://github.com/LioraLabs/gravewake), a Three.js twin-stick shooter built with this skill: the declarative UI engine in `src/decl`, the catalog in `docs/declarative-ui.md`, level layout in `content/arena.kdl`, Blender-scripted models in `models/`. [How it was made](https://lioralabs.dev/blog/agentic-speed-human-control).
+Starting point: [`starter/`](starter/) beside this file is a tiny, working game with every layer in place: the declarative UI engine in `src/decl`, the catalog in `docs/declarative-ui.md`, the content loader, the game clock, the guard tests, Storybook, and the Blender model pipeline. A new game begins as a copy of it; its README says how.
 
 ## Stack
 
@@ -31,7 +31,7 @@ Before you write anything, climb. Stop at the first rung that holds:
 The KDL and CSS are the game's real interface. Write them like documentation:
 
 - **Names follow the fiction.** Ids, tokens, classes, model and file names say what the thing is in the game as it stands today. When the theme changes, the names change with it: `enemy "skeleton"` with `--enemy-skeleton`, never `enemy "drone" name="Skeleton"`.
-- **Every file opens with a short header**: what lives here, its words and their units. `content/arena.kdl` in GRAVEWAKE is the model to copy.
+- **Every file opens with a short header**: what lives here, its words and their units. The starter's files show the shape.
 - **Name values instead of repeating them.** A hue is a palette token (`var(--moon)`), a shared size is a variable, and a comment says why a value is what it is.
 - **One thing per line**, grouped under comment headings, files short enough to scan in one screen where possible.
 
@@ -42,7 +42,7 @@ The **tweak map** is the promise that the designer can tweak anything in the gam
 | Change | Home |
 |---|---|
 | An enemy, item, card, wave, upgrade | `content/*.kdl`, parsed by `loadKdl` and a zod schema |
-| Level layout: scenery, props, where things stand | `content/<level>.kdl` (a placement kind, e.g. GRAVEWAKE's `scatter`) |
+| Level layout: scenery, props, where things stand | `content/<level>.kdl` (a placement kind, e.g. a `scatter` of props along an edge) |
 | A number a rule reads | `tuning.ts` |
 | What is on a screen, its structure | `screens/<screen>.kdl` prefabs |
 | UI colour, size, spacing, easing, animation | `screens/<screen>.css` |
@@ -62,7 +62,7 @@ Hues and look numbers live in CSS even when only a shader reads them: the design
 
 The KDL elements, CSS properties, shared prefabs, behaviour words, content kinds, modelling kit and test harnesses are the game's **vocabulary**: a library that screens and content pull from.
 
-- **Copy the engine, don't write it.** A new game starts from the reference's `src/decl`, `content-load.ts` (`loadKdl`, `combinators`, `tunedText`), `clock.ts`, the shots harness and the guard tests, and builds the first screen only once those run green. A 3D game adds a Three applier beside the Pixi one; the core stays the same.
+- **Copy the starter, don't write the engine.** A new game begins as a copy of `starter/`, runs its tests green, and only then replaces the placeholder game with its own. The engine (`src/decl`), `content-load.ts` (`loadKdl`, `combinators`, `tunedText`), `clock.ts` and the guard tests stay as copied. A 3D game adds a Three applier beside the Pixi one; the core stays the same.
 - **One home per kind of word:**
 
   | Vocabulary | Home |
