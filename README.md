@@ -49,11 +49,12 @@ claude plugin install codegraph@lioralabs
 
 ### waytchme
 
-Edit a [WaytchMe](https://github.com/LioraLabs/waytchme) screen recording from
-its transcript and event log. The `edit-take` skill makes the agent Murphy,
-the editor the narrator talks to while recording: it obeys spoken directives,
-cuts fluff, captions, and hands you the review before anything renders.
-Needs a WaytchMe checkout with the session.
+Make [WaytchMe](https://github.com/LioraLabs/waytchme) screen recordings.
+`script-video` reads a codebase and writes the video script: named scenes,
+each with on-screen actions and voice-over lines, plus the vocabulary for
+transcription. `edit-take` makes the agent Murphy, the editor you talk to
+while recording: it obeys spoken directives, cuts fluff, and hands you the
+review before anything renders. Needs a WaytchMe checkout.
 
 ```bash
 claude plugin install waytchme@lioralabs
